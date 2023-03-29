@@ -1,0 +1,1 @@
+//je haalt de de data uit de json en toont dit op de pagina en vult een html element op de pagina1.
