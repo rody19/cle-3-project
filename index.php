@@ -1,22 +1,3 @@
-<?php
-//
-//Require functions for actions
-/*
-require_once "includes/actions.php";
-
-Based on the existence of the GET parameter, 1 of the 2 functions will be called
-if (!isset($_GET['id'])) {
-    $data = getDishes();
-} else {
-    $data = getDishDetails($_GET['id']);
-}
-
-Set the header & output JSON so the client will know what to expect.
-header("Content-Type: application/json");
-echo json_encode($data);
-exit;
-*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,10 +6,19 @@ exit;
     <title>Sporten met een visuele beperking!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="includes/style.css">
+    <style>
+        a.ex2:hover, a.ex2:active {font-size: 150%;}
+        a.ex2:hover, a.ex2:active {background: yellow;}
+    </style>
 </head>
 <body>
-<?php include 'includes/nav.php' ?>
-
-<img src="includes/img/banner.img" alt="banner foto temp.">
-</body>
+<nav class="skew-menu">
+    <ul>
+        <li><a class ="ex2" href="index.php">Informatie</a></li>
+        <li><a class ="ex2" href="">Sportclubs</a></li>
+        <li><a class ="ex2" href="">Tips/Tricks</a></li>
+        <li><a class ="ex2" href="">Meer over ons</a></li>
+        <li><a class ="ex2" href="">Onze ervaring</a></li>
+    </ul>
+</nav>
 </html>
