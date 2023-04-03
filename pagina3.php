@@ -6,6 +6,7 @@
     <title>Sporten met een visuele beperking!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="includes/style.css">
+    <script type="text/javascript" src="includes/js/mainNiels.js" defer></script>
 </head>
 <body>
 
@@ -17,7 +18,10 @@
     <h1>Sporten met een visuele beperking!</h1>
 
     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dictum interdum nisi in aliquam. In hac habitasse platea dictumst. Vivamus pretium massa velit, eu malesuada libero condimentum eu. Vivamus eleifend fermentum auctor. Integer commodo turpis ac eros porta molestie. In nec nisi sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse tortor urna, posuere sed elit sed, ultricies euismod quam. Nunc luctus rutrum quam venenatis semper. Pellentesque commodo hendrerit metus quis tristique. </p>
-
+    <div id="sport-card"></div>
 </section>
+<section id="sport-gallery"></section>
+
+
 </body>
 </html>
