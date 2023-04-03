@@ -1,7 +1,7 @@
 window.addEventListener('load', init);
 
 //Globals
-let apiUrl = "https://localhost/cle-3-project/getinfoNiels.php";
+let apiUrl = "./getinfoNiels.php";
 let sportData = {};
 let gallery;
 let detailDialog;
@@ -10,11 +10,19 @@ let detailContent;
 
 function init(){
 
-    //Start the application with loading the API data
-    ajaxRequest(apiUrl, createSportCards);
+
     gallery = document.getElementById('sport-gallery');
     gallery.addEventListener('click', sportClickHandler);
 
+    //dialog element
+    detailDialog = document.getElementById('sport-card-detail');
+    detailContent = document.querySelector('.modal-content');
+    detailDialog.addEventListener('click', detailModalClickHandler);
+    detailDialog.addEventListener('close', detailModalCloseHandler);
+
+    //document.addEventListener('keyup', keyUpHandler);
+    //Start the application with loading the API data
+    ajaxRequest(apiUrl, createSportCards);
 }
 /**
  * AJAX-call to retrieve data from a webservice
@@ -26,6 +34,7 @@ function ajaxRequest(url, successHandler)
 {
     fetch(url)
         .then((response) => {
+            console.log(response.statusText);
             if (!response.ok) {
                 throw new Error(response.statusText);
             }
@@ -47,7 +56,7 @@ function createSportCards(data)
         //will result in Pokémon being ordered based on the load times of the API instead of chronically
         let sportCard = document.createElement('div');
         sportCard.classList.add('create-sport-card');
-        sportCard.dataset.name = sportCard.name;
+        sportCard.dataset.name = getDishes.name;
 
         //Append Pokémon card to the actual HTML
         gallery.appendChild(sportCard);
@@ -82,7 +91,7 @@ function fillSportCard(getDishes)
     let button = document.createElement('button');
     button.innerHTML = 'Show shiny';
     button.dataset.id = getDishes.id;
-    getDishes.appendChild(button);
+    sportCard.appendChild(button);
 
     //Store Pokémon data globally for later use in other functions
     sportData[getDishes.id] = getDishes;
@@ -94,6 +103,7 @@ function fillSportCard(getDishes)
  */
 function ajaxErrorHandler(data)
 {
+    console.log(data);
     let error = document.createElement('div');
     error.classList.add('error');
     error.innerHTML = 'Er is helaas iets fout gegaan met de API, probeer het later opnieuw';
@@ -112,22 +122,21 @@ function sportClickHandler(e)
     if (clickedItem.nodeName !== 'BUTTON') {
         return;
     }
+    ajaxRequest(apiUrl+ "?id=" + clickedItem.dataset.id, fillDetailCard);
+}
 
-    //Get the information from the global stored data
-    let getDishes = sportData[clickedItem.dataset.id];
-
-    //Reset the content
+function fillDetailCard(data){
+    console.log(data);
     detailContent.innerHTML = '';
 
     //Show the name we used on the main grid
     let title = document.createElement('h1');
-    title.innerHTML = `${pokemon.name} (#${pokemon.id})`;
+    title.innerHTML = `${data.name} (#${data.id})`;
     detailContent.appendChild(title);
 
-    //Display the shiny
-    let shiny = document.createElement('img');
-    shiny.src = pokemon.sprites.other.home.front_shiny;
-    detailContent.appendChild(shiny);
+    let tekst = document.createElement('p');
+    tekst.innerHTML = `${data.name} (#${data.id})`;
+    detailContent.appendChild(tekst);
 
     //Open the modal
     detailDialog.showModal();
@@ -151,7 +160,7 @@ function detailModalClickHandler(e)
  *
  * @param e
  */
-function dialogCloseHandler(e)
+function detailModalCloseHandler(e)
 {
     gallery.classList.remove('dialog-open');
 }

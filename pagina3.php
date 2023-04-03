@@ -23,5 +23,11 @@
 <section id="sport-gallery"></section>
 
 
+<dialog class="modal" id="sport-card-detail">
+    <div class="modal-content"></div>
+    <button class="modal-close">❌</button>
+</dialog>
+
+
 </body>
 </html>
