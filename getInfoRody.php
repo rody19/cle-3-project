@@ -1,7 +1,7 @@
-//informatie uit actionrody.php halen en vertalen naar bruikbare json.
+
 
 <?php
-
+//informatie uit actionrody.php halen en vertalen naar bruikbare json.
 require_once "includes/actionsRody.php";
 
 //Based on the existence of the GET parameter, 1 of the 2 functions will be called
@@ -16,3 +16,4 @@ header("Content-Type: application/json");
 echo json_encode($data);
 
 exit;
+?>
