@@ -6,14 +6,32 @@ let sportData = {};
 let gallery;
 let detailDialog;
 let detailContent;
-
+let favoriteItems = [];
+let list;
+let favoriteForm;
+let dataForModal;
 
 function init(){
-
 
     gallery = document.getElementById('sport-gallery');
     gallery.addEventListener('click', sportClickHandler);
 
+    //Connect variables with HTML elements
+    favoriteForm = document.querySelector('#favoriteForm');
+    list = document.querySelector('#list');
+
+    //Add event listeners for form & removal
+    favoriteForm.addEventListener('submit', formSubmitHandler);
+    list.addEventListener('click', todoItemClickHandler);
+
+    //Retrieve current items from local storage & add them to the list
+    let favoriteItemsString = localStorage.getItem('favoriteItems');
+    if (favoriteItemsString !== null && favoriteItemsString !== undefined) { //Or: if (todoItemsString !== null) {
+        favoriteItems = JSON.parse(favoriteItemsString);
+        for (let favoriteItem of favoriteItems) {
+            addTodoItem(favoriteItem);
+        }
+    }
     //dialog element
     detailDialog = document.getElementById('sport-card-detail');
     detailContent = document.querySelector('.modal-content');
@@ -64,7 +82,6 @@ function createSportCards(data)
         //Retrieve the detail information from the API
         //ajaxRequest(getDishes.url, fillSportCard);
         fillSportCard(getDishes);
-
     }
 }
 /**
@@ -79,7 +96,7 @@ function fillSportCard(getDishes)
 
     //Element for the name of the Pokémon
     let title = document.createElement('h2');
-    title.innerHTML = `${getDishes.name} (#${getDishes.id})`;
+    title.innerHTML = `${getDishes.name}`;
     sportCard.appendChild(title);
 
     //Element for the image of the Pokémon
@@ -127,15 +144,16 @@ function sportClickHandler(e)
 
 function fillDetailCard(data){
     console.log(data);
+    dataForModal = data;
     detailContent.innerHTML = '';
 
     //Show the name we used on the main grid
     let title = document.createElement('h1');
-    title.innerHTML = `${data.name} (#${data.id})`;
+    title.innerHTML = `${data.name}`;
     detailContent.appendChild(title);
 
     let tekst = document.createElement('p');
-    tekst.innerHTML = `${data.name} (#${data.id})`;
+    tekst.innerHTML = `${data.name}`;
     detailContent.appendChild(tekst);
 
     //Open the modal
@@ -164,3 +182,59 @@ function detailModalCloseHandler(e)
 {
     gallery.classList.remove('dialog-open');
 }
+/**
+     * Handle the new input from the form
+     *
+     * @param e
+     */
+    function formSubmitHandler(e)
+    {
+        e.preventDefault();
+        console.log("add to favorite");
+        //Check if the field is not empty
+        let name = dataForModal.name;
+        console.log(dataForModal.name)
+
+            //Add to the HTML list & local storage
+            addTodoItem(name);
+            todoItems.push(name);
+            localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems));
+
+
+    }
+
+    /**
+     * Add a new item to the HTML
+     *
+     * @param todoText
+     */
+    function addTodoItem(todoText)
+    {
+        let listItem = document.createElement('li');
+        listItem.innerText = todoText;
+        list.appendChild(listItem);
+        console.log(favoriteItems);
+    }
+
+    /**
+     * Remove the clicked list item
+     *
+     * @param e
+     */
+    function todoItemClickHandler(e) {
+        let favoriteTarget = e.target;
+
+        //Only continue if we clicked on a list item
+        if (favoriteTarget.nodeName !== 'LI') {
+            return;
+        }
+
+        //Remove from local storage
+        let itemIndex = favoriteItems.indexOf(favoriteTarget.innerText);
+        todoItems.splice(itemIndex, 1);
+        localStorage.setItem('todoItems', JSON.stringify(todoItems));
+
+        //Remove from HTML
+        favoriteTarget.remove();
+}
+

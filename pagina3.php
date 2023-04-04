@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sporten met een visuele beperking!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- bulma geeft een conflict!
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">-->
     <link rel="stylesheet" href="includes/style.css">
     <script type="text/javascript" src="includes/js/mainNiels.js" defer></script>
 </head>
@@ -12,7 +13,7 @@
 
 <?php include 'includes/nav.php' ?>
 
-<img src="includes/img/banner.jpg" alt="banner foto temp.">
+<!--<img src="includes/img/banner.jpg" alt="banner foto temp.">-->
 
 <section class="main">
     <h1>Sporten met een visuele beperking!</h1>
@@ -26,8 +27,16 @@
 <dialog class="modal" id="sport-card-detail">
     <div class="modal-content"></div>
     <button class="modal-close">❌</button>
+    <form id="favoriteForm">
+        <input type="submit" value="Toevoegen⭐"/>
+    </form>
 </dialog>
 
+<section id="favoriet">
+    <div id="favoritelist">
+        <ul id="list"></ul>
+    </div>
+</section>
 
 </body>
 </html>

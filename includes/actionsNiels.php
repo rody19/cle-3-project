@@ -46,14 +46,17 @@ function getDishDetails($id)
 {
     $tags = [
         1 => [
+            "name" => "Pizza",
             "recipe" => "Put it in the oven and go!",
             "tags" => ['cheese', 'oven']
         ],
         2 => [
+            "name" => "Kale",
             "recipe" => "You can make this delicious Dutch meal by ...",
             "tags" => ['unox', 'healthy', 'stamppot', 'boerenkool']
         ],
         3 => [
+            "name" => "Lasagne",
             "recipe" => "Very nice when your grandma prepares this meal",
             "tags" => ['omnomnom']
         ],
