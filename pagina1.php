@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sporten met een visuele beperking!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
     <link rel="stylesheet" href="includes/style.css">
     <script type="text/javascript" src="includes/js/mainRody.js" defer></script>
 </head>
@@ -18,11 +18,18 @@
 <dialog class="modal" id="sport-detail">
     <div class="modal-content"></div>
     <button class="modal-close">❌</button>
-
+    <form id="favoriteForm">
+    <input type="submit" value="toevoegen⭐">
+        <
+    </form>
 </dialog>
-<button id="load-info"</button>
 
-<img src="includes/img/banner.img" alt="banner foto temp.">
+<div id="favoriet">
+    <ul id="list"></ul>
+</div>
+
+
+
 </body>
 </html>
 
