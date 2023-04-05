@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="includes/style.css">
 </head>
 <body>
-
+<style>
+    html {
+        background-image: url('includes/img/banner.jpg');
+    }
+</style>
 <?php include 'includes/nav.php' ?>
 
-<img src="includes/img/banner.jpg" alt="banner foto temp.">
+
 
 <section class="main">
     <h1>Sporten met een visuele beperking!</h1>

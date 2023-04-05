@@ -9,16 +9,13 @@
     <style>
         a.ex2:hover, a.ex2:active {font-size: 150%;}
         a.ex2:hover, a.ex2:active {background: yellow;}
+
+         html {
+             background-image: url('includes/img/banner.jpg');
+         }
+
     </style>
+    <?php include 'includes/nav.php' ?>
 </head>
-<body>
-<nav class="skew-menu">
-    <ul>
-        <li><a class ="ex2" href="index.php">Informatie</a></li>
-        <li><a class ="ex2" href="">Sportclubs</a></li>
-        <li><a class ="ex2" href="">Tips/Tricks</a></li>
-        <li><a class ="ex2" href="">Meer over ons</a></li>
-        <li><a class ="ex2" href="">Onze ervaring</a></li>
-    </ul>
-</nav>
+
 </html>
