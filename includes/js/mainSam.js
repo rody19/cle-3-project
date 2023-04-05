@@ -7,9 +7,10 @@ let sportData = {};
 let gallery;
 let detailDialog;
 let detailContent;
-let todoItems = [];
-let inputField;
+let favoriteItems = [];
 let list;
+let favoriteForm;
+let dataForModal;
 
 
 function init(){
@@ -17,6 +18,21 @@ function init(){
 
     gallery = document.getElementById('sport-gallery');
     gallery.addEventListener('click', sportClickHandler);
+
+    favoriteForm = document.querySelector('#favoriteForm');
+    list = document.querySelector('#list');
+
+    //Add event listeners for form & removal
+    favoriteForm.addEventListener('submit', formSubmitHandler);
+    list.addEventListener('click', todoItemClickHandler);
+
+    let favoriteItemsString = localStorage.getItem('favoriteItems');
+    if (favoriteItemsString !== null && favoriteItemsString !== undefined) { //Or: if (todoItemsString !== null) {
+        favoriteItems = JSON.parse(favoriteItemsString);
+        for (let favoriteItem of favoriteItems) {
+            addTodoItem(favoriteItem);
+        }
+    }
 
     //dialog element
     detailDialog = document.getElementById('sport-card-detail');
@@ -131,16 +147,26 @@ function sportClickHandler(e)
 
 function fillDetailCard(data){
     console.log(data);
+    dataForModal = data;
     detailContent.innerHTML = '';
 
     //Show the name we used on the main grid
     let title = document.createElement('h3');
-    title.innerHTML = `${data.name} (#${data.id})`;
+    title.innerHTML = `${data.name}`;
     detailContent.appendChild(title);
 
-    let tekst = document.createElement('p');
-    tekst.innerHTML = `${data.name} (#${data.id})`;
-    detailContent.appendChild(tekst);
+    let locatie = document.createElement('p');
+    locatie.innerHTML = `${data.location}`;
+    detailContent.appendChild(locatie);
+
+    let telefoon = document.createElement('p');
+    telefoon.innerHTML = `${data.phone}`;
+    detailContent.appendChild(telefoon);
+
+    let tijd = document.createElement('p');
+    tijd.innerHTML = `${data.time}`;
+    detailContent.appendChild(tijd);
+
 
     //Open the modal
     detailDialog.showModal();
@@ -168,3 +194,55 @@ function detailModalCloseHandler(e)
 {
     gallery.classList.remove('dialog-open');
 }
+
+function formSubmitHandler(e)
+{
+    e.preventDefault();
+    console.log("add to favorite");
+    //Check if the field is not empty
+    let name = dataForModal.name;
+    console.log(dataForModal.name);
+
+    //Add to the HTML list & local storage
+    addTodoItem(name);
+    favoriteItems.push(name);
+    localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems));
+
+
+}
+
+/**
+ * Add a new item to the HTML
+ *
+ * @param todoText
+ */
+function addTodoItem(todoText)
+{
+    let listItem = document.createElement('li');
+    listItem.innerText = todoText;
+    list.appendChild(listItem);
+    console.log(favoriteItems);
+}
+
+/**
+ * Remove the clicked list item
+ *
+ * @param e
+ */
+function todoItemClickHandler(e) {
+    let favoriteTarget = e.target;
+
+    //Only continue if we clicked on a list item
+    if (favoriteTarget.nodeName !== 'LI') {
+        return;
+    }
+
+    //Remove from local storage
+    let itemIndex = favoriteItems.indexOf(favoriteTarget.innerText);
+    favoriteItems.splice(itemIndex, 1);
+    localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems));
+
+    //Remove from HTML
+    favoriteTarget.remove();
+}
+

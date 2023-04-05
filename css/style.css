@@ -1,0 +1,28 @@
+body{
+    background-color: blue;
+}
+
+section{
+    background-color: yellow;
+    border-radius: 10px;
+    margin: auto;
+    width: 60vw;
+}
+
+div{
+    margin-left: 20vw;
+}
+
+img{
+    border-radius: 10px;
+}
+
+button{
+    background-color: blue;
+    border-radius: 10px;
+}
+
+.submit{
+    background-color: blue;
+    border-radius: 10px;
+}

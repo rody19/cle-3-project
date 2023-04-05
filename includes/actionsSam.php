@@ -28,7 +28,6 @@ function getDishes()
             "phone" => "06-45464161",
             "time" => "18:00 - 19:30",
             "img" => "includes/img/ris.jpg",
-
         ],
         [
             "id" => 4,
@@ -51,24 +50,28 @@ function getDishDetails($id)
     $tags = [
         1 => [
             "name" => "Active Sports Premium Club",
-            "phone" => "010-4675647",
-            "tags" => ['cheese', 'oven']
+            "location" => "Locatie: Van Maanenstraat 8 3038 CZ Rotterdam",
+            "phone" => "Telefoon: 010-4675647",
+            "time" => "Openingstijd: 06:00 - 21:30",
         ],
         2 => [
-            "name" => "RIS (Rotterdamse Vereniging voor aangepast sporten)",
-            "phone" => "06-45464161",
-            "tags" => ['unox', 'healthy', 'stamppot', 'boerenkool']
+            "name" => "RIS Fitness",
+            "location" => "Locatie: Westersingel 300 3015 LJ Rotterdam",
+            "phone" => "Telefoon: 06-45464161",
+            "time" => "Openingstijd: 19:30 - 20:30",
         ],
         3 => [
-            "name" => "RIS (Rotterdamse Vereniging voor aangepast sporten)",
-            "phone" => "06-45464161",
-            "tags" => ['kapsalon', 'tasty', 'meat']
+            "name" => "RIS Medisch Fitness",
+            "location" => "Locatie: Melanchtonweg 70 3052 KV Rotterdam",
+            "phone" => "Telefoon: 06-45464161",
+            "time" => "Openingstijd: 18:00 - 19:30",
 
         ],
         4 => [
             "name" => "Meander yoga",
-            "phone" => "06-26937240",
-            "tags" => ['omnomnom']
+            "location" => "Locatie: Bergselaan 144 3037 CG Rotterdam",
+            "phone" => "telefoon: 06-26937240",
+            "time" => "Openingstijd: 18:45 - 20:00",
         ]
     ];
 

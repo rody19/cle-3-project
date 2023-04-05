@@ -9,8 +9,7 @@ $infoJson = json_decode($info);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sporten met een visuele beperking</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="includes/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <style>
     a.ex2:hover, a.ex2:active {font-size: 150%;}
@@ -21,7 +20,7 @@ $infoJson = json_decode($info);
     <ul>
         <li><a class ="ex2" href="index.php">Home</a></li>
         <li><a class ="ex2" href="pagina1.php">Tips/Tricks</a></li>
-        <li><a class ="ex2" href="pagina2.php">Sportclubs</a></li>
+        <li><a class ="ex2" href="pagina2.html">Sportclubs</a></li>
         <li><a class ="ex2" href="pagina3.php">Meer over ons</a></li>
         <li><a class ="ex2" href="pagina4.php">Onze ervaring</a></li>
     </ul>
