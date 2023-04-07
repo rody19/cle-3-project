@@ -10,6 +10,8 @@ $infoJson = json_decode($info);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sporten met een visuele beperking</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <style>
     a.ex2:hover, a.ex2:active {font-size: 150%;}
