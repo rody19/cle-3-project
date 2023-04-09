@@ -1,7 +1,9 @@
 //je haalt de de data uit de json en toont dit op de pagina en vult een html element op de pagina1.
+
+//wanneer de load event is getriggerd word de functie init uitgevoerd.
 window.addEventListener('load', init);
 
-
+//globals
 let apiUrl = "./getInfoRody.php";
 let info;
 let sportData= {};
@@ -11,18 +13,30 @@ let detailContent;
 let favoriteItems = [];
 let inputField;
 let list;
+let favoriteForm;
+let dataForModal;
 
 function init(){
 
-    info = document.getElementById('pagina1Info');
+    info = document.getElementById('pagina-1-Info');
     info.addEventListener('click', sportClickHandler);
 
-    let form = document.querySelector('#favoriteForm');
+    //connect variables with html elements
+    favoriteForm = document.querySelector('#favoriteForm');
     list = document.querySelector('#list');
 
     //Add event listeners for form & removal
-    form.addEventListener('submit', formSubmitHandler);
+    favoriteForm.addEventListener('submit', formSubmitHandler);
     list.addEventListener('click', todoItemClickHandler);
+
+    //Retrieve current items from local storage & add them to the list
+    let favoriteItemsString = localStorage.getItem('favoriteItems');
+    if (favoriteItemsString !== null && favoriteItemsString !== undefined) { //Or: if (todoItemsString !== null) {
+        favoriteItems = JSON.parse(favoriteItemsString);
+        for (let favoriteItem of favoriteItems) {
+            addTodoItem(favoriteItem);
+        }
+    }
 
     //Retrieve modal elements, and add click event for closing modal
     detailDialog = document.getElementById('sport-detail');
@@ -31,12 +45,10 @@ function init(){
     detailDialog.addEventListener('close', dialogCloseHandler);
 
 
-
+//document.addEventListener('keyup', keyUpHandler);
+    //Start the application with loading the API data
     ajaxRequest(apiUrl, createSportCards);
 
-    //console.log("http://localhost/cle-3-project/getInfoRody.php");
-    //button = document.getElementById('load-pokemon');
-    //button.addEventListener('click', getSport);
 }
 
 
@@ -82,7 +94,7 @@ function fillSportCards(informatieSport)
 
     //Element for the name of the Pokémon
     let title = document.createElement('h2');
-    title.innerHTML = `${informatieSport.name} (#${informatieSport.id})`;
+    title.innerHTML = `${informatieSport.name}`;
     sportCard.appendChild(title);
 
     //Element for the image of the Pokémon
@@ -104,16 +116,16 @@ function fillSportCards(informatieSport)
 
 function fillDetailCard(data){
     console.log(data);
-    console.log(detailContent);
+    dataForModal = data;
     detailContent.innerHTML = '';
 
     //Show the name we used on the main grid
     let title = document.createElement('h1');
-    title.innerHTML = `${data.name} (#${data.id})`;
+    title.innerHTML = `${data.name}~`;
     detailContent.appendChild(title);
 
     let tekst = document.createElement('p');
-    tekst.innerHTML = `${data.text} (#${data.id})`;
+    tekst.innerHTML = `${data.text}`;
     detailContent.appendChild(tekst);
 
     //Open the modal
@@ -133,13 +145,6 @@ function sportClickHandler(e) {
     }
     ajaxRequest(apiUrl + "?id=" + clickedItem.dataset.id, fillDetailCard)
 }
-    // TODO: ajax request to:
-    // http://localhost/cle-3-project/getInfoRody.php?id=2
-    // add succeshandler for ajax call
-
-
-    //Get the information from the global stored data
-
 
 
 
@@ -165,6 +170,11 @@ function detailModalClickHandler(e)
     }
 }
 
+function detailModalCloseHandler(e)
+{
+    info.classList.remove('dialog-open');
+}
+
 /**
  * Close the underlying blur effect when dialog is closed (both on our own click or the native ESC key)
  *
@@ -186,9 +196,9 @@ function todoItemClickHandler(e)
         return;
     }
 //Remove from local storage
-    let itemIndex = favoriteItems.indexOf(favoriteItems.innerText);
+    let itemIndex = favoriteItems.indexOf(favoriteTarget.innerText);
     favoriteItems.splice(itemIndex, 1);
-    localStorage.setItem('todoItems', JSON.stringify(favoriteItems));
+    localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems));
 
     //Remove from HTML
     favoriteTarget.remove();
@@ -199,23 +209,18 @@ function todoItemClickHandler(e)
      *
      * @param e
      */
-    function formSubmitHandler(informatieSport, e) {
+    function formSubmitHandler(e) {
         e.preventDefault();
-
+        console.log("add to favorite");
         //Check if the field is not empty
-        let inputValue = `${informatieSport.name} (#${informatieSport.id})`;
-        if (inputValue !== '') {
-            //Add to the HTML list & local storage
-            addTodoItem(inputValue);
-            favoriteItems.push(inputValue);
-            localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems));
-            //Reset the field
-            inputField.value = '';
-            inputField.classList.remove('error');
-        } else {
-            //Add an error state with CSS
-            inputField.classList.add('error');
-        }
+        let name = dataForModal.name;
+        console.log(dataForModal.name)
+
+        //Add to the HTML list & local storage
+        addTodoItem(name);
+        favoriteItems.push(name);
+        localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems));
+
     }
 
 function addTodoItem(todoText)

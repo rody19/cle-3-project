@@ -16,7 +16,7 @@ function informatieSport()
             "id" => 2,
             "name" => "soorten visuele beperking",
             "soorten" => "",
-            "img" => "includes/img/beperkingBowlen.jpg",
+            "img" => "includes/img/foto sport.jpg",
         ],
     ];
 }
