@@ -2,37 +2,35 @@
 /**
  * @return array
  */
-function getDishes()
+function getBeperking()
 {
     return [
         [
             "id" => 1,
-            "name" => "Pizza",
-            "kitchen" => "Italian",
-            "img" => "cle-3-project/includes/img/hr_logo_mini_cmyk_rood-ai.png",
+            "name" => "Slechtziend",
+            "beschrijving" => "Er zijn in nederland bijna 223.000 mensen slechtziend.",
+            "" => "",
+            "img" => "./cle-3-project/includes/img/hr_logo_mini_cmyk_rood-ai.png",
         ],
         [
             "id" => 2,
-            "name" => "Kale",
-            "kitchen" => "Dutch",
+            "name" => "Blind",
+            "beschrijving" => "Dit houd in dat u minder dan 5% zicht heeft of dat uw gezichtsveld beperkt is tot minder dan 10 graden.",
+            "" => "",
             "img" => "cle-3-project/includes/img/hr_logo_mini_cmyk_rood-ai.png",
         ],
         [
             "id" => 3,
-            "name" => "Lasagna",
-            "kitchen" => "Italian",
+            "name" => "Oogziekten",
+            "beschrijving" => "Er zijn verschillende soorten oogziekten. Een paar zijn: Glaucoom, Maculadegeneratie, CVI, Niet aangeboren hersenletsel.",
+            "" => "",
             "img" => "cle-3-project/includes/img/hr_logo_mini_cmyk_rood-ai.png",
         ],
         [
             "id" => 4,
-            "name" => "Kebab",
-            "kitchen" => "Turkish",
-            "img" => "cle-3-project/includes/img/hr_logo_mini_cmyk_rood-ai.png",
-        ],
-        [
-            "id" => 5,
-            "name" => "Paella",
-            "kitchen" => "Spanish",
+            "name" => "Doofblind",
+            "beschrijving" => "Doofblind is een combinatie van niet goed kunnen horen en niet goed kunnen zien. Zicht en gehoor kunnen ook geheel weggevallen zijn. Doofblindheid kan verschillende oorzaken hebben en kan op ieder moment ontstaan. Als u doofblind bent, ervaart u dit op uw eigen manier. ",
+            "" => "",
             "img" => "cle-3-project/includes/img/hr_logo_mini_cmyk_rood-ai.png",
         ]
     ];
@@ -42,33 +40,25 @@ function getDishes()
  * @param $id
  * @return mixed
  */
-function getDishDetails($id)
+function getBeperkingDetails($id)
 {
     $tags = [
         1 => [
-            "name" => "Pizza",
-            "recipe" => "Put it in the oven and go!",
-            "tags" => ['cheese', 'oven']
+            "name" => "Slechtziend",
+            "beschrijving" => "Slechtziendheid houdt in dat u een lage gezichtsscherpte heeft, een verkleind gezichtsveld ervaart of overgevoelig bent voor licht. U ziet bjvoorbeeld donkere vlekken of u kunt alleen zien wat recht voor u staat. Bij de meeste slechtziende mensen verergeren de klachten of symptomen.",
         ],
         2 => [
-            "name" => "Kale",
-            "recipe" => "You can make this delicious Dutch meal by ...",
-            "tags" => ['unox', 'healthy', 'stamppot', 'boerenkool']
+            "name" => "blind",
+            "beschrijving" => "Mogelijk ziet u nog wel verschil tussen licht en donker. Mogelijke oorzaken van blindheid zijn: aangeboren, erfelijke afwijking aan één oog of ogen, acite blindheid na een ongeval of val op het hoofd, Tijdelijke blindheid door shock of ziekte, Ouderdom",
         ],
         3 => [
-            "name" => "Lasagne",
-            "recipe" => "Very nice when your grandma prepares this meal",
-            "tags" => ['omnomnom']
+            "name" => "Oogziekten",
+            "beschrijving" => "U heeft een oogziekte. Welke oogziekten zijn er allemaal en wat voor symptomen horen daarbij? Een oogziekte kan aangeboren of erfelijk zijn, leeftijdgebonden zijn of samenhangen met een aandoening als diabetes. Ook kunnen de hersenen de oorzaak zijn als die de visuele informatie niet goed verwerken. Tot slot kan een ongeluk, val of Niet Aangeboren Hersenletsel (NAH) de oorzaak zijn.",
         ],
         4 => [
-            "recipe" => "Everytime in the city after midnight",
-            "tags" => ['kapsalon', 'tasty', 'meat']
-        ],
-        5 => [
-            "recipe" => "Specialty when on holiday in Spain",
-            "tags" => ['fish']
+            "name" => "Doofblind",
+            "beschrijving" => "",
         ],
     ];
-
     return $tags[$id];
 }

@@ -20,9 +20,10 @@
         <li><a class ="ex2" href="pagina3.php">Meer over ons</a></li>
         <li><a class ="ex2" href="">Onze ervaring</a></li>
     </ul>
-    <div class="container">
-        <h1>Sporten met een visuele beperking!</h1>
-        <p>Dit is een webpagina over het sporten met een visuele beperking. Op deze pagina kun je informatie vinden over:</p>
-    </div>
 </nav>
+
+<div class="container">
+    <h1>Sporten met een visuele beperking!</h1>
+    <p>Dit is een webpagina over het sporten met een visuele beperking. Op deze pagina kun je informatie vinden over:</p>
+</div>
 </html>

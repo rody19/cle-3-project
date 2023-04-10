@@ -10,9 +10,15 @@
     <script type="text/javascript" src="includes/js/mainNiels.js" defer></script>
 </head>
 <body>
-
-<?php include 'includes/nav.php' ?>
-
+<nav class="skew-menu">
+    <ul>
+        <li><a class ="ex2" href="index.php">Informatie</a></li>
+        <li><a class ="ex2" href="">Sportclubs</a></li>
+        <li><a class ="ex2" href="">Tips/Tricks</a></li>
+        <li><a class ="ex2" href="pagina3.php">Meer over ons</a></li>
+        <li><a class ="ex2" href="">Onze ervaring</a></li>
+    </ul>
+</nav>
 <!--<img src="includes/img/banner.jpg" alt="banner foto temp.">-->
 
 <section class="main">
@@ -26,13 +32,16 @@
 
 <dialog class="modal" id="sport-card-detail">
     <div class="modal-content"></div>
-    <button class="modal-close">❌</button>
+    <button class="modal-close">Close❌</button>
     <form id="favoriteForm">
         <input type="submit" value="Toevoegen⭐"/>
     </form>
 </dialog>
 
+
 <section id="favoriet">
+    <h2>Click de naam hieronder om hem uit de favoriete lijst te halen!</h2>
+    <p>Als hieronder geen tekst staat is de lijst leeg.</p>
     <div id="favoritelist">
         <ul id="list"></ul>
     </div>
