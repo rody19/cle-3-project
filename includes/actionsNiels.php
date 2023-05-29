@@ -9,28 +9,24 @@ function getBeperking()
             "id" => 1,
             "name" => "Slechtziend",
             "beschrijving" => "Er zijn in nederland bijna 223.000 mensen slechtziend.",
-            "" => "",
             "img" => "./cle-3-project/includes/img/hr_logo_mini_cmyk_rood-ai.png",
         ],
         [
             "id" => 2,
             "name" => "Blind",
             "beschrijving" => "Dit houd in dat u minder dan 5% zicht heeft of dat uw gezichtsveld beperkt is tot minder dan 10 graden.",
-            "" => "",
             "img" => "cle-3-project/includes/img/hr_logo_mini_cmyk_rood-ai.png",
         ],
         [
             "id" => 3,
             "name" => "Oogziekten",
             "beschrijving" => "Er zijn verschillende soorten oogziekten. Een paar zijn: Glaucoom, Maculadegeneratie, CVI, Niet aangeboren hersenletsel.",
-            "" => "",
             "img" => "cle-3-project/includes/img/hr_logo_mini_cmyk_rood-ai.png",
         ],
         [
             "id" => 4,
             "name" => "Doofblind",
             "beschrijving" => "Doofblind is een combinatie van niet goed kunnen horen en niet goed kunnen zien. Zicht en gehoor kunnen ook geheel weggevallen zijn. Doofblindheid kan verschillende oorzaken hebben en kan op ieder moment ontstaan. Als u doofblind bent, ervaart u dit op uw eigen manier. ",
-            "" => "",
             "img" => "cle-3-project/includes/img/hr_logo_mini_cmyk_rood-ai.png",
         ]
     ];
@@ -38,7 +34,7 @@ function getBeperking()
 
 /**
  * @param $id
- * @return mixed
+ * @return beschrijving
  */
 function getBeperkingDetails($id)
 {
@@ -57,7 +53,7 @@ function getBeperkingDetails($id)
         ],
         4 => [
             "name" => "Doofblind",
-            "beschrijving" => "",
+            "beschrijving" => "Doofblindheid kan allerlei oorzaken hebben en kan op ieder moment ontstaan. U kunt een genetische oorzaak hebben. Een bekend voorbeeld is het syndroom van Usher. Een syndroom komt bij de geboorte tot uiting of pas later in het leven. U kunt ook doofblind raken door een trauma, ziekte of samenkomen van losstaande oorzaken.",
         ],
     ];
     return $tags[$id];
